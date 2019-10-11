@@ -1,4 +1,5 @@
 import quandl,math
+import pickle
 import matplotlib.pyplot as plt
 from sklearn import  preprocessing , svm
 import datetime
@@ -25,6 +26,10 @@ y = np.array(df['label'])
 X_train , X_test , y_train , y_test = train_test_split(X,y , test_size = 0.2)
 clf = LinearRegression(n_jobs= -1)
 clf.fit(X_train , y_train)
+with open('LinearRegression.pickle' , 'wb') as f:
+    pickle.dump(clf, f)
+pickle_in = open('LinearRegression.pickle' , 'rb')
+clf = pickle.load(pickle_in)
 accuracylinearregression = clf.score(X_test , y_test)
 #print(accuracylinearregression)
 #TRIED SVM BUT GOT AN ACCURACY OF ABOUT 70% IT has to do with the high variance of the dataset.
