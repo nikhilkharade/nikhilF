@@ -1,0 +1,2 @@
+I have used knn for the cancer dataset
+I got an accuracy of 97%
